@@ -73,7 +73,7 @@ const { post } = Astro.props as Props
 const postSlug = Astro.params.post ?? slugify(post.title)
 const canonicalUrl = new URL(`/blog/${postSlug}`, Astro.site ?? Astro.url).href
 const author = {
-  name: 'Laura Calderón',
+  name: 'Luna Calderón',
   image: '/posts/post-image-1.png',
   bio: 'Estudiante de Ingeniería de Sistemas',
 }
