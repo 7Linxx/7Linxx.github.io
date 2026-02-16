@@ -1,64 +1,33 @@
 ---
-title: Sign Language Bridge
-author: Jane Smith
-description: An AI-powered real-time sign language translation system that enables seamless communication between deaf and hearing individuals
-tags: ['Accessibility', 'AI', 'Computer Vision']
+title: SITP
+author: Laura Calderón, Nataly Manrique, Gabriela Poveda, Santiago Muñoz, Felipe Acosta, Kevin Tunjuelo
+description: Aplicativo que calcula las rutas más cortas dentro del Sistema Integrado de Transporte Público de Bogotá mediante algoritmos de grafos.
+tags: ['Java', 'Algoritmos', 'Transporte']
 ---
 
-## Project Overview
+## Descripción del proyecto
 
-Sign Language Bridge revolutionizes communication for the deaf community by providing real-time translation between sign language and spoken/written language. Using advanced computer vision and natural language processing, the system captures sign language gestures and converts them into text or speech, while also translating spoken words into animated sign language.
+SITP es un aplicativo de escritorio que simula y optimiza rutas dentro del Sistema Integrado de Transporte Público de Bogotá. Usando algoritmos de búsqueda de caminos más cortos, el sistema permite a los usuarios encontrar la ruta más eficiente entre dos puntos dentro de la red de transporte.
 
-import BlockQuote from '@components/BlockQuote.astro'
+Este fue un proyecto de equipo desarrollado junto a Nataly Manrique, Gabriela Poveda, Santiago Muñoz, Felipe Acosta y Kevin Tunjuelo.
+
 import BreakoutImage from '@components/BreakoutImage.astro'
-import { Image } from 'astro:assets'
 
 <BreakoutImage src="/projects/project-image-2.png" decorative={true} />
 
-## Technical Challenges
+## Mi aporte
 
-The biggest hurdle was developing a system that could accurately capture and interpret the nuanced movements of sign language in real-time, including facial expressions and hand positions. We implemented a novel approach using 3D motion tracking and contextual understanding to achieve high accuracy in varied lighting conditions.
+Me encargué del desarrollo del **frontend en Java**, construyendo las vistas e interfaces gráficas con las que el usuario interactúa para ingresar origen, destino y visualizar las rutas resultantes. También implementé el sistema de **properties para idiomas**, permitiendo que el aplicativo soporte múltiples idiomas de forma dinámica.
 
-## Project Gallery
+## Tecnologías utilizadas
 
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-  <Image
-    src="/projects/project-image-2.png"
-    alt="Sign language translation app interface showing gesture recognition"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-3.png"
-    alt="Person using sign language with the translation system"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-4.png"
-    alt="Mobile version of the Sign Language Bridge application"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-5.png"
-    alt="Group demonstration of the Sign Language Bridge system"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-</div>
+El proyecto fue desarrollado completamente en **Java**, aprovechando sus librerías gráficas para la interfaz de usuario y estructuras de datos para la implementación de los algoritmos de rutas.
 
-## Testimonial
+## Equipo
 
-<BlockQuote author="David Chen, Software Engineer">
-  Sign Language Bridge has transformed how I communicate with my hearing colleagues. It's like having a skilled
-  interpreter available 24/7, giving me true independence in professional settings.
-</BlockQuote>
-
-<BreakoutImage src="/projects/project-image-3.png" decorative={true} />
-
-The project is currently expanding to support more sign languages and developing specialized vocabularies for professional environments.
+- Laura Calderón
+- Nataly Manrique
+- Gabriela Poveda
+- Santiago Muñoz
+- Felipe Acosta
+- Kevin Tunjuelo
