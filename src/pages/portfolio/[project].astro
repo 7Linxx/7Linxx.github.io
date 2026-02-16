@@ -1,7 +1,6 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import SocialShares from '@components/SocialShares.astro'
 import { Heading } from 'accessible-astro-components'
 import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
@@ -41,7 +40,7 @@ const { Content } = await render(project)
 const author = {
   name: project.data.author,
   image: '/projects/project-image-1.png',
-  bio: 'Project Creator',
+  bio: 'Proyecto colaborativo',
 }
 ---
 
@@ -60,9 +59,11 @@ const author = {
   </section>
   <section class="my-12">
     <div class="narrow space-content container">
-      <Heading level="h2">Share this project</Heading>
-      <p>Like this project? Share it with your network!</p>
-      <SocialShares />
+      <Heading level="h2">Ver en GitHub</Heading>
+      <p>¿Te interesa este proyecto? Puedes ver el código fuente en mi GitHub.</p>
+      <a href="https://github.com/7Linxx/" target="_blank" rel="noopener noreferrer">
+        Ver repositorio en GitHub →
+      </a>
     </div>
   </section>
 </DefaultLayout>

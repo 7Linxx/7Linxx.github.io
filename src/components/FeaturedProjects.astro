@@ -30,7 +30,7 @@ interface Props {
   title?: string
 }
 
-const { class: className, limit = 3, title = 'Featured projects' } = Astro.props
+const { class: className, limit = 3, title = 'Proyectos destacados' } = Astro.props
 
 // Get projects from content collection
 const projects = await getCollection('projects')
@@ -54,7 +54,7 @@ const featuredProjects = projects.slice(0, limit).map((project, index) => ({
             url={'/portfolio/' + project.id}
             headingLevel="h2"
             title={project.data.title}
-            footer={'Author: ' + project.data.author}
+            footer={'Proyecto de: ' + project.data.author}
           >
             {project.data.description}
           </Card>
@@ -63,7 +63,7 @@ const featuredProjects = projects.slice(0, limit).map((project, index) => ({
     </div>
     <div class="mt-12">
       <Link href="/portfolio/" isButton animateOnHover animationType="nudge">
-        View all projects
+        Ver todos los proyectos
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </div>
