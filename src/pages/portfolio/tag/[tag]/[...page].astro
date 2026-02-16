@@ -67,11 +67,11 @@ const { page, currentTag, uniqueTags } = Astro.props
 
 <DefaultLayout
   title={`Portfolio - ${currentTag.label}`}
-  description={`Projects filtered by ${currentTag.label} tag. Discover our work in ${currentTag.label} and related technologies.`}
+  description={`Proyectos filtrados por la etiqueta ${currentTag.label}. Descubre mi trabajo en ${currentTag.label} y tecnologías relacionadas.`}
 >
   <PageHeader
     title={`Portfolio: ${currentTag.label}`}
-    subtitle={`Showing ${page.total} project${page.total !== 1 ? 's' : ''} tagged with "${currentTag.label}". <a href="/portfolio">View all projects</a> or filter by other tags below.`}
+    subtitle={`Mostrando ${page.total} proyecto${page.total !== 1 ? 's' : ''} con la etiqueta "${currentTag.label}". <a href="/portfolio">Ver todos los proyectos</a> o filtra por otras etiquetas.`}
     bgType="bordered"
     customBreadcrumbLabels={{
       [currentTag.slug]: currentTag.label,
@@ -80,9 +80,9 @@ const { page, currentTag, uniqueTags } = Astro.props
   />
   <section class="my-12">
     <div class="container">
-      <Heading level="h2" size="h5" class="mb-2">Tags</Heading>
+      <Heading level="h2" size="h5" class="mb-2">Etiquetas</Heading>
       <div class="flex flex-wrap gap-4">
-        <Link href="/portfolio">All projects</Link>
+        <Link href="/portfolio">Todos los proyectos</Link>
         {
           uniqueTags.map((tag: { label: string; slug: string }) => {
             const isCurrentTag = tag.slug === currentTag.slug
@@ -98,7 +98,7 @@ const { page, currentTag, uniqueTags } = Astro.props
       </div>
       <p class="mt-8 text-sm">
         <em
-          >Project {page.start + 1} through {page.end + 1} of {page.total} total projects tagged with "{
+          >Proyecto {page.start + 1} al {page.end + 1} de {page.total} proyectos con la etiqueta "{
             currentTag.label
           }"</em
         >
@@ -112,7 +112,7 @@ const { page, currentTag, uniqueTags } = Astro.props
                 url={'/portfolio/' + project.id}
                 title={project.data.title}
                 headingLevel="h2"
-                footer={'Author: ' + project.data.author}
+                footer={'Proyecto de: ' + project.data.author}
                 fullHeight={true}
               >
                 <span slot="meta">
@@ -139,7 +139,7 @@ const { page, currentTag, uniqueTags } = Astro.props
               lastPage={page.url.next ? `/portfolio/tag/${currentTag.slug}/${page.lastPage}` : null}
               currentPage={`${page.currentPage}`}
               totalPages={`${page.lastPage}`}
-              ariaLabel={`${currentTag.label} portfolio pagination`}
+              ariaLabel={`Paginación del portfolio - ${currentTag.label}`}
             />
           </div>
         )
