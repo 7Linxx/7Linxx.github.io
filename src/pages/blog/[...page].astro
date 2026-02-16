@@ -2,6 +2,10 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { Heading } from 'accessible-astro-components'
+
+export async function getStaticPaths() {
+  return [{ params: { page: undefined } }]
+}
 ---
 
 <DefaultLayout
