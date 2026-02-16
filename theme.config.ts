@@ -3,13 +3,13 @@ import previewImage from '@assets/img/social-preview-image.png'
 import logoImage from '@assets/img/logo.svg'
 
 export default defineThemeConfig({
-  name: 'Accessible Astro',
+  name: 'Luna Calderón',
   id: 'accessible-astro-starter',
   logo: logoImage,
   seo: {
-    title: 'Accessible Astro Starter',
+    title: 'Luna Calderón Portfolio',
     description:
-      'An Accessible Starter Theme for Astro including several accessibility features and tools to help you build faster.',
+      'Un portafolio completo que describe la experiencia y avance durante los años de estudio y practica de Luna Calderón.',
     author: 'Incluud',
     image: previewImage, // Can also be a string e.g. '/social-preview-image.png',
   },
@@ -38,44 +38,6 @@ export default defineThemeConfig({
         href: '/portfolio',
       },
       {
-        label: 'Features',
-        type: 'dropdown',
-        items: [
-          {
-            label: 'Accessibility statement',
-            href: '/accessibility-statement',
-          },
-          {
-            label: 'Accessible components',
-            href: '/accessible-components',
-          },
-          {
-            label: 'Accessible launcher',
-            href: '/accessible-launcher',
-          },
-          {
-            label: 'Color contrast checker',
-            href: '/color-contrast-checker',
-          },
-          {
-            label: 'Markdown page',
-            href: '/markdown-page',
-          },
-          {
-            label: 'MDX page',
-            href: '/mdx-page',
-          },
-          {
-            label: '404 page',
-            href: '/404',
-          },
-          {
-            label: 'Sitemap',
-            href: '/sitemap',
-          },
-        ],
-      },
-      {
         type: 'link',
         label: 'Contact',
         href: '/contact',
@@ -83,7 +45,7 @@ export default defineThemeConfig({
       {
         type: 'link',
         label: 'Go to our GitHub page, opens in new tab',
-        href: 'https://github.com/incluud/accessible-astro-starter',
+        href: 'https://github.com/7Linxx',
         icon: 'lucide:github',
         external: true,
         excludeFromLauncher: true,
@@ -93,7 +55,7 @@ export default defineThemeConfig({
   socials: [
     {
       label: 'GitHub',
-      href: 'https://github.com/incluud/',
+      href: 'https://github.com/7Linxx',
       icon: 'lucide:github',
     },
     {
