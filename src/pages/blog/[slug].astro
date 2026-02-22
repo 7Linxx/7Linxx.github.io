@@ -6,9 +6,14 @@ import type { CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
+  
+  if (!posts || posts.length === 0) {
+    console.warn('No posts found in collection')
+    return []
+  }
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }))
 }
@@ -27,7 +32,7 @@ const author = {
 }
 ---
 
-<DefaultLayout title={post.data.title} description={post.data.description} url={`/blog/${post.slug}`}>
+<DefaultLayout title={post.data.title} description={post.data.description} url={`/blog/${post.id}`}>
   <PageHeader
     title={post.data.title}
     subtitle={post.data.description}
