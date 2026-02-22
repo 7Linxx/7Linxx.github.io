@@ -14,6 +14,11 @@ import postImage3 from '@assets/images/posts/post-image-3.png'
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const posts = await getCollection('posts')
   
+  if (!posts || posts.length === 0) {
+    console.warn('No posts found in collection')
+    return []
+  }
+  
   // Sort by date, newest first
   const sortedPosts = posts.sort((a, b) => {
     const dateA = new Date(a.data.publishDate || 0)
@@ -57,7 +62,7 @@ const { page } = Astro.props
             <li>
               <Card
                 imageComponent={post.featuredImage}
-                url={'/blog/' + post.slug}
+                url={'/blog/' + post.id}
                 title={post.data.title}
                 headingLevel="h2"
                 footer={'Por ' + post.data.author}
