@@ -1,36 +1,94 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Heading } from 'accessible-astro-components'
+import { Card, Pagination, Badge } from 'accessible-astro-components'
+import type { PaginateFunction, Page } from 'astro'
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
-export async function getStaticPaths() {
-  return [{ params: { page: undefined } }]
+// Import images for posts
+import postImage1 from '@assets/images/posts/post-image-1.png'
+import postImage2 from '@assets/images/posts/post-image-2.png'
+import postImage3 from '@assets/images/posts/post-image-3.png'
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const posts = await getCollection('posts')
+  
+  // Sort by date, newest first
+  const sortedPosts = posts.sort((a, b) => {
+    const dateA = new Date(a.data.publishDate || 0)
+    const dateB = new Date(b.data.publishDate || 0)
+    return dateB.getTime() - dateA.getTime()
+  })
+
+  const postImages = [postImage1, postImage2, postImage3]
+
+  const postsWithImages = sortedPosts.map((post, index) => ({
+    ...post,
+    featuredImage: postImages[index % postImages.length],
+  }))
+
+  return paginate(postsWithImages, { pageSize: 6 })
 }
+
+interface Props {
+  page: Page<CollectionEntry<'posts'> & { featuredImage: any }>
+}
+
+const { page } = Astro.props
 ---
 
 <DefaultLayout
   title="Blog"
-  description="Próximamente: notas sobre desarrollo frontend, diseño UI/UX y programación."
+  description="Notas sobre desarrollo frontend, diseño UI/UX, programación competitiva y lo que voy aprendiendo semestre a semestre."
 >
   <PageHeader
     title="Blog"
-    subtitle="Próximamente — aquí compartiré lo que voy aprendiendo semestre a semestre."
+    subtitle="Reflexiones, aprendizajes y notas sobre desarrollo, diseño y programación."
     bgType="bordered"
   />
 
-  <section class="my-24">
-    <div class="container space-content">
-      <Heading level="h2">¿Qué viene en el blog?</Heading>
-      <p class="text-2xl">
-        Aún estoy preparando el contenido. Cuando esté listo, aquí encontrarás notas y reflexiones sobre todo lo que voy aprendiendo en el camino.
-      </p>
-      <p>Algunos de los temas que planeo cubrir:</p>
-      <ul class="list-inside list-disc space-y-2">
-        <li>Desarrollo Frontend — Angular, CSS y buenas prácticas</li>
-        <li>Diseño UI/UX — tips y procesos en Figma</li>
-        <li>Programación Competitiva — problemas y soluciones en C++</li>
-        <li>Proyectos universitarios — qué aprendí y cómo lo resolví</li>
+  <section class="my-12">
+    <div class="container">
+      <p class="text-sm"><em>Post {page.start + 1} al {page.end + 1} de {page.total} en total</em></p>
+      <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          page.data.map((post) => (
+            <li>
+              <Card
+                imageComponent={post.featuredImage}
+                url={'/blog/' + post.slug}
+                title={post.data.title}
+                headingLevel="h2"
+                footer={'Por ' + post.data.author}
+                fullHeight={true}
+              >
+                <span slot="meta">
+                  {post.data.tags && post.data.tags.map((tag: string) => (
+                    <Badge>{tag}</Badge>
+                  ))}
+                </span>
+                {post.data.description}
+              </Card>
+            </li>
+          ))
+        }
       </ul>
+      {
+        page && page.lastPage > 1 && (
+          <div class="mt-12 grid place-content-center">
+            <Pagination
+              firstPage={page.url.prev ? '/blog' : null}
+              previousPage={page.url.prev ? page.url.prev : null}
+              nextPage={page.url.next ? page.url.next : null}
+              lastPage={page.url.next ? `/blog/${page.lastPage}` : null}
+              currentPage={`${page.currentPage}`}
+              totalPages={`${page.lastPage}`}
+              ariaLabel="Paginación del blog"
+            />
+          </div>
+        )
+      }
     </div>
   </section>
 </DefaultLayout>
