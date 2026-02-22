@@ -1,0 +1,54 @@
+---
+title: Mis primeros modelos Entidad-Relación
+author: Luna Calderón
+description: Ejercicios de modelado de bases de datos para mi clase de Bases de Datos 1 - biblioteca, aviación y streaming universitario
+tags: ['Bases de Datos', 'Modelado ER', 'Aprendizaje']
+publishDate: 2026-02-22
+---
+
+## Aprendiendo a modelar bases de datos
+
+En mi clase de Bases de Datos 1 estamos aprendiendo a diseñar modelos Entidad-Relación (ER), que son diagramas que representan cómo se organizan y relacionan los datos en una base de datos. Hice tres ejercicios para practicar y aquí está mi avance.
+
+import { Image } from 'astro:assets'
+
+## Ejercicio 1: Sistema de biblioteca y aviación
+
+Este ejercicio combinó dos sistemas: uno de gestión de biblioteca con socios, libros y rentas, y otro de aviación con pilotos, aviones, tripulación y vuelos. Fue interesante modelar las relaciones muchos-a-muchos y cómo cada entidad se conecta con las demás.
+
+<Image
+  src="/posts/modelos-biblioteca-aviacion.png"
+  alt="Modelo entidad-relación de biblioteca y sistema de aviación"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+**Entidades principales:**
+- **Biblioteca:** SOCIO, LIBRO, rentas
+- **Aviación:** PILOTO, AVION, TRIPULACIÓN, VUELO
+
+## Ejercicio 2: Plataforma de streaming universitaria
+
+Este fue mi favorito porque es más cercano a algo que usaríamos en la vida real. Diseñé un modelo para una plataforma de streaming de la universidad donde los usuarios (estudiantes) pueden buscar, ver contenido, y tener preferencias por categorías. También incluye productores de contenido.
+
+<Image
+  src="/posts/streaming-universidad.png"
+  alt="Modelo entidad-relación de plataforma de streaming universitaria"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+**Entidades principales:**
+- USUARIO (estudiantes con carrera, código, etc.)
+- CONTENIDO (título, año de lanzamiento, idioma)
+- CATEGORIA (preferencias del usuario)
+- PRODUCTOR (quien crea el contenido)
+- BUSQUEDA y VISTO (acciones del usuario)
+
+## Reflexiones
+
+No son perfectos, pero así es el proceso de aprendizaje. Lo más difícil ha sido identificar correctamente las relaciones entre entidades y decidir qué atributos van en cada una. Cada ejercicio me ayuda a entender mejor cómo estructurar información del mundo real en un modelo de base de datos.
+
+Seguiré practicando y mejorando estos diagramas conforme avance el semestre. 📊
