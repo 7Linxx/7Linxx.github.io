@@ -1,0 +1,137 @@
+---
+title: 'Taller MER: Modelos Entidad-Relación'
+author: Luna Calderón, Isabella Rodriguez, Daniela Serrato, Lina Patiña
+description: Solución del Taller de Modelos Entidad-Relación para la clase de Bases de Datos 1 - empresa de transportes, bienes raíces, proveedores, biblioteca, supermercado, banco y universidad.
+tags: ['Bases de Datos', 'Modelado ER', 'Taller']
+publishDate: 2026-04-09
+---
+
+import { Image } from 'astro:assets'
+
+En este taller diseñamos diagramas Entidad-Relación para siete escenarios distintos, identificando entidades, atributos, llaves primarias, llaves foráneas y las restricciones de correspondencia de cada relación.
+
+---
+
+## Punto 1: Empresa de transportes
+
+El sistema modela una empresa que reparte paquetes por toda Colombia. Las entidades principales son **CONDUCTOR**, **PAQUETES**, **CAMION** y **CIUDAD**.
+
+- **CONDUCTOR** (PK: NumeroCédula, atributos: Nombre, Teléfono, Dirección, Salario, Ciudad) distribuye muchos paquetes → relación **Distribuir** (1:M).
+- **PAQUETES** (PK: Código, atributos: Descripción, Destinatario, DireccionDestinario) llega a una sola ciudad → relación **Llegar** (1:M con CIUDAD).
+- **CAMION** (PK: Matrícula, atributos: Modelo, Tipo, Potencia) puede ser conducido por varios conductores en fechas distintas → relación **Conducir** (M:N con CONDUCTOR).
+- **CIUDAD** (PK: CódigoCiudad, atributos: Nombre).
+
+<Image
+  src="/posts/taller-mer-punto1.png"
+  alt="Diagrama ER - Empresa de transportes: CONDUCTOR, PAQUETES, CAMION y CIUDAD"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+## Punto 2: Empresa de bienes raíces
+
+El sistema registra casas en venta y los agentes que gestionan los contratos con los dueños. Las entidades principales son **CASA**, **DUEÑO**, **AGENTE** y **FIRMA**.
+
+- **CASA** (PK: Codigo, atributos: Precio, Dirección, características variables) puede pertenecer a varias firmas → relación **Pertenecer** (M:N con FIRMA a través de DUEÑO).
+- **DUEÑO** (PK: Codigo, atributos: Nombre, Dirección, Teléfono) contrata a un agente → relación **Contratar** (M:1 con AGENTE).
+- **AGENTE** (PK: Cedula, atributos: Nombre compuesto —1° Nombre, 2° Nombre, 1° Apellido, 2° Apellido—, Género, FechaNacimiento, Edad —derivada—, VentasUltimoMes).
+- **FIRMA** (PK: Codigo, atributos: Nombre, Dirección).
+
+<Image
+  src="/posts/taller-mer-punto2.png"
+  alt="Diagrama ER - Empresa de bienes raíces: CASA, DUEÑO, AGENTE y FIRMA"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+## Punto 3: Proveedores, clientes y pedidos
+
+Este diagrama se derivó del esquema relacional dado (Proveedor, Cliente, Pedido, Elemento). Las entidades principales son **CLIENTE**, **PROVEEDOR** y **ELEMENTO**.
+
+- **CLIENTE** (PK: NombreCliente, atributos: Dirección).
+- **PROVEEDOR** (PK: NombreProveedor).
+- **ELEMENTO** (PK: NombreItem, atributos: Descripcion).
+- La relación **Vender** entre PROVEEDOR y ELEMENTO es M:N con atributo Precio.
+- La relación **Contactar** entre CLIENTE, PROVEEDOR y ELEMENTO es ternaria (M:N) con atributo Cantidad, representando los pedidos.
+
+<Image
+  src="/posts/taller-mer-punto3.png"
+  alt="Diagrama ER - Proveedores, clientes y pedidos: CLIENTE, PROVEEDOR y ELEMENTO"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+## Punto 4: Biblioteca comunitaria
+
+El sistema gestiona los préstamos de artículos (libros, CDs, cintas, etc.) a usuarios, incluyendo penalizaciones por retrasos y patrocinadores para menores de edad.
+
+- **USUARIO** (PK: NumeroCuenta, atributos: Dirección, Teléfono, FechaNacimiento, Edad —derivada—, Ciudad, Salario, Patrocinador) puede tener un patrocinador (relación reflexiva **Patrocinar**: patrocinado/patrocinador).
+- **ARTÍCULO** (PK: IdArticulo, atributos: Titulo) se presta a un usuario → relación **Prestar** (1:M).
+- **PENALIZACIÓN** (entidad débil, PK parcial: IdPenalización, atributos: FechaLimiteEntrega) se genera a partir de un préstamo → relación **Generar** (1:1 con USUARIO).
+- El conjunto USUARIO + ARTÍCULO + PENALIZACIÓN está enmarcado en el contexto **PRESTAMO**.
+
+<Image
+  src="/posts/taller-mer-punto4.png"
+  alt="Diagrama ER - Biblioteca comunitaria: USUARIO, ARTÍCULO y PENALIZACIÓN"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+## Punto 5: Cadena de supermercados
+
+El sistema apoya el análisis de ventas de productos en distintos supermercados a lo largo del tiempo.
+
+- **SUPERMERCADO** con atributo compuesto AreaGeografica (Ciudad, Estado, Región).
+- **PRODUCTO** (atributos: Nombre, Categorías —multivaluado—).
+- La relación **Vender** conecta SUPERMERCADO y PRODUCTO con el atributo de tiempo **Tiempo** (compuesto: Día, Mes, Año), lo que permite analizar ventas en diferentes momentos.
+
+<Image
+  src="/posts/taller-mer-punto5.png"
+  alt="Diagrama ER - Cadena de supermercados: SUPERMERCADO, PRODUCTO y dimensión de tiempo"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+## Punto 6: Sistema bancario
+
+El diagrama muestra como la entidad **SUCURSAL** tiene los atributos ciudad, activo y nombre —el cual es el atributo clave—; la entidad **PRÉSTAMO** posee los atributos importe y el número de préstamo —el cual es el atributo clave—; la entidad **CLIENTE** posee la información general como ciudad, calle, nombre y el atributo clave id; la entidad **EMPLEADO** contiene nombre, número de teléfono, fecha de comienzo, id como el atributo clave, antigüedad como atributo derivado, y nombre del subordinado como atributo multivaluado; la entidad **CUENTA** contiene saldo y número de cuenta como el atributo clave; la entidad **CUENTA DE AHORRO** contiene tipo de interés y la entidad **CUENTA CORRIENTE** contiene descubierto; la entidad débil **PAGO** contiene fecha de pago, importe pagado, y la clave parcial número de pago.
+
+La entidad SUCURSAL se relaciona con el PRÉSTAMO y a su vez el PRÉSTAMO se relaciona con CLIENTE por medio del prestatario; la relación entre CLIENTE y PRÉSTAMO es prestar; además, CLIENTE se relaciona con EMPLEADO por medio de banquero y consejero, esta relación tiene como atributo tipo; en EMPLEADO existen los roles de jefe y trabajador; CLIENTE también está relacionado con CUENTA por medio de impositor, el cual tiene como atributo fecha de acceso; CUENTA es exclusiva de las entidades CUENTA DE AHORROS y CUENTA CORRIENTE mediante una especialización total y exclusiva.
+
+---
+
+## Punto 7: Oficina de registro universitaria
+
+El sistema mantiene datos sobre asignaturas, ofertas, profesores y estudiantes, incluyendo matrículas y notas.
+
+- **ASIGNATURA** (PK: NumeroAsignatura, atributos: Título, Programa, Prerequisito).
+- **OFERTA ASIGNATURA** (PK: IdOferta, atributos: Año, Semestre, NumeroSeccion, Horario, Aula) es ofrecida por una ASIGNATURA → relación **Ofrecer** (M:1).
+- **PROFESOR** (PK: IdProfesor, atributos: Nombre, Departamento, Título) enseña muchas ofertas → relación **Enseñar** (1:M).
+- **ESTUDIANTE** (PK: IdEstudiante, atributos: Nombre, Programa) se matricula en muchas ofertas → relación **Matricular** (M:N) con atributo **Nota**.
+
+<Image
+  src="/posts/taller-mer-punto7.png"
+  alt="Diagrama ER - Oficina de registro universitaria: PROFESOR, OFERTA ASIGNATURA, ASIGNATURA y ESTUDIANTE"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg my-6"
+/>
+
+---
+
+*Integrantes: Luna Calderón, Isabella Rodriguez, Daniela Serrato, Lina Patiña*
