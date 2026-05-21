@@ -1,0 +1,71 @@
+---
+title: Taller Modelo Entidad Relación - MERE v3
+authors: ['Luna Calderón', 'Lina Patiño', 'Daniela Serrato', 'Isabella Rodríguez']
+description: Taller de Bases de Datos 1 en donde se desarrollan tres modelos Entidad-Relación junto con su respectivo Modelo Relacional - Residuos Tóxicos, Comidas a Domicilio y un sistema propio para la Universidad El Bosque
+tags: ['Bases de Datos', 'Modelado ER', 'Modelo Relacional', 'Aprendizaje']
+publishDate: 2026-05-20
+---
+
+## Taller Modelo Entidad Relación
+
+En este taller de Bases de Datos 1 desarrollamos tres modelos Entidad-Relación (MER) basados en enunciados de problemas reales. Para cada uno se construyó primero el diagrama entidad-relación, identificando entidades, atributos, claves primarias y cardinalidades, y luego se tradujo al modelo relacional correspondiente. Los dos primeros ejercicios parten de enunciados propuestos por el docente, mientras que el tercero fue diseñado por nosotras con base en una problemática de la Universidad El Bosque.
+
+import { Image } from 'astro:assets'
+
+## Punto 1: Residuos Tóxicos
+
+Sistema de información para la gestión de residuos tóxicos y peligrosos, desde su producción en empresas productoras hasta su traslado y tratamiento en lugares seguros. Se modelaron entidades como la empresa productora, el residuo, las empresas transportistas y los destinos, teniendo en cuenta supuestos sobre códigos de residuos, tipos de envase, medios de transporte y fechas de traslado.
+
+<Image
+  src="/posts/mere-v3-residuos-mer.png"
+  alt="Modelo Entidad-Relación del sistema de Residuos Tóxicos"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+<Image
+  src="/posts/mere-v3-residuos-relacional.png"
+  alt="Modelo Relacional del sistema de Residuos Tóxicos"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+## Punto 2: Comidas a Domicilio
+
+Sistema de información para la franquicia Eat'n Go, empresa dedicada a la venta de pizzas, bocadillos y productos complementarios. Se modelaron entidades como artículos, ingredientes, pedidos, clientes, repartidores y scooters, considerando supuestos sobre tamaños, precios, tipos de venta (local, recoger o domicilio), promociones y artículos estrella.
+
+<Image
+  src="/posts/mere-v3-comidas-mer.png"
+  alt="Modelo Entidad-Relación del sistema de Comidas a Domicilio"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+<Image
+  src="/posts/mere-v3-comidas-relacional.png"
+  alt="Modelo Relacional del sistema de Comidas a Domicilio"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+## Punto 3: Sistema propio — Universidad El Bosque
+
+<Image
+  src="/posts/mere-v3-bosque-mer.png"
+  alt="Modelo Entidad-Relación Extendido del sistema propio para la Universidad El Bosque"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+<Image
+  src="/posts/mere-v3-bosque-relacional.png"
+  alt="Modelo Relacional del sistema propio para la Universidad El Bosque"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
