@@ -17,7 +17,7 @@ import { Image } from 'astro:assets'
 Sistema de información para la gestión de un taller de reparación de vehículos ubicado en el estacionamiento de la Universidad El Bosque, destinado a estudiantes, profesores y visitantes del centro médico Los Cobos. Se modelaron entidades como propietario, automóvil, técnico, orden de trabajo, componente y factura. Los componentes aplican EER mediante especialización en cuatro subtipos — aceites, filtros, baterías y neumáticos — cada uno con atributos específicos adicionales. La factura incluye desglose de mano de obra, impuesto del 21 % y conversión de moneda a USD y EUR.
 
 <Image
-  src="/posts/mere-v4-taller-mer.png"
+  src="./mere-v4-taller-mer.png"
   alt="Modelo Entidad-Relación Extendido del sistema de Taller Automotriz"
   width={1200}
   height={800}
@@ -25,7 +25,7 @@ Sistema de información para la gestión de un taller de reparación de vehícul
 />
 
 <Image
-  src="/posts/mere-v4-taller-relacional.png"
+  src="./mere-v4-taller-relacional.png"
   alt="Modelo Relacional del sistema de Taller Automotriz"
   width={1200}
   height={800}
@@ -37,7 +37,7 @@ Sistema de información para la gestión de un taller de reparación de vehícul
 Sistema de gestión interno para la empresa de servicios tecnológicos "Soluciones Innova". Se modelaron entidades como cliente corporativo, servicio, contrato, gerente de proyecto y equipo de proyecto. El esquema contempla que los clientes pueden tener múltiples teléfonos de contacto, que el precio de cada servicio es definido por el gerente para cada contrato en particular, y que los gerentes pueden tener un superior directo de rango inmediatamente superior. El equipo de proyecto es una entidad débil cuya existencia depende del servicio asociado, lo que se representa mediante EER con una relación de existencia.
 
 <Image
-  src="/posts/mere-v4-innova-mer.png"
+  src="./mere-v4-innova-mer.png"
   alt="Modelo Entidad-Relación Extendido del sistema de Soluciones Innova"
   width={1200}
   height={800}
@@ -45,7 +45,7 @@ Sistema de gestión interno para la empresa de servicios tecnológicos "Solucion
 />
 
 <Image
-  src="/posts/mere-v4-innova-relacional.png"
+  src="./mere-v4-innova-relacional.png"
   alt="Modelo Relacional del sistema de Soluciones Innova"
   width={1200}
   height={800}
@@ -57,7 +57,7 @@ Sistema de gestión interno para la empresa de servicios tecnológicos "Solucion
 Sistema de gestión operativa para el Metro de Bogotá. Se modelaron entidades como línea, estación, acceso, tren y patio de mantenimiento. Se tuvo en cuenta que las estaciones de transferencia pueden pertenecer a varias líneas de forma permanente, que cada acceso pertenece exclusivamente a una estación de manera inmutable, y que la flota de trenes por línea debe estar entre N y 2N trenes (donde N es el número de estaciones de esa línea). Todo tren debe tener obligatoriamente un patio de mantenimiento asignado en todo momento.
 
 <Image
-  src="/posts/mere-v4-metro-mer.png"
+  src="./mere-v4-metro-mer.png"
   alt="Modelo Entidad-Relación del sistema de Metro de Bogotá"
   width={1200}
   height={800}
@@ -65,7 +65,7 @@ Sistema de gestión operativa para el Metro de Bogotá. Se modelaron entidades c
 />
 
 <Image
-  src="/posts/mere-v4-metro-relacional.png"
+  src="./mere-v4-metro-relacional.png"
   alt="Modelo Relacional del sistema de Metro de Bogotá"
   width={1200}
   height={800}
@@ -77,7 +77,7 @@ Sistema de gestión operativa para el Metro de Bogotá. Se modelaron entidades c
 Sistema de gestión del catálogo musical de la taberna "La Facultad", ubicada frente a la Universidad El Bosque. Se modelaron entidades como grabación musical, formato, artista y productora. Cada grabación puede existir en múltiples formatos con distintos estados de conservación, y puede haber sido realizada por varios artistas en fechas diferentes. La relación entre grabación y artista es N:M con atributo de fecha de participación. Cada grabación está vinculada a una única productora identificada por su ID de compañía.
 
 <Image
-  src="/posts/mere-v4-facultad-mer.png"
+  src="./mere-v4-facultad-mer.png"
   alt="Modelo Entidad-Relación del sistema de Discoteca La Facultad"
   width={1200}
   height={800}
@@ -85,7 +85,7 @@ Sistema de gestión del catálogo musical de la taberna "La Facultad", ubicada f
 />
 
 <Image
-  src="/posts/mere-v4-facultad-relacional.png"
+  src="./mere-v4-facultad-relacional.png"
   alt="Modelo Relacional del sistema de Discoteca La Facultad"
   width={1200}
   height={800}
