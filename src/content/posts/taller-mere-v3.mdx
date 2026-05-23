@@ -6,18 +6,24 @@ tags: ['Bases de Datos', 'Modelado ER', 'Modelo Relacional', 'Aprendizaje']
 publishDate: 2026-05-20
 ---
 
+import { Image } from 'astro:assets'
+import residuosMer from './mere-v3-residuos-mer.png'
+import residuosRelacional from './mere-v3-residuos-relacional.png'
+import comidasMer from './mere-v3-comidas-mer.png'
+import comidasRelacional from './mere-v3-comidas-relacional.png'
+import bosqueMer from './mere-v3-bosque-mer.png'
+import bosqueRelacional from './mere-v3-bosque-relacional.png'
+
 ## Taller Modelo Entidad Relación
 
 En este taller de Bases de Datos 1 desarrollamos tres modelos Entidad-Relación (MER) basados en enunciados de problemas reales. Para cada uno se construyó primero el diagrama entidad-relación, identificando entidades, atributos, claves primarias y cardinalidades, y luego se tradujo al modelo relacional correspondiente. Los dos primeros ejercicios parten de enunciados propuestos por el docente, mientras que el tercero fue diseñado por nosotras con base en una problemática de la Universidad El Bosque.
-
-import { Image } from 'astro:assets'
 
 ## Punto 1: Residuos Tóxicos
 
 Sistema de información para la gestión de residuos tóxicos y peligrosos, desde su producción en empresas productoras hasta su traslado y tratamiento en lugares seguros. Se modelaron entidades como la empresa productora, el residuo, las empresas transportistas y los destinos, teniendo en cuenta supuestos sobre códigos de residuos, tipos de envase, medios de transporte y fechas de traslado.
 
 <Image
-  src="./mere-v3-residuos-mer.png"
+  src={residuosMer}
   alt="Modelo Entidad-Relación del sistema de Residuos Tóxicos"
   width={1200}
   height={800}
@@ -26,14 +32,22 @@ Sistema de información para la gestión de residuos tóxicos y peligrosos, desd
 
 <embed src="./mere-v3-residuos-mer.pdf" type="application/pdf" width="100%" height="600px" />
 
+<Image
+  src={residuosRelacional}
+  alt="Modelo Relacional del sistema de Residuos Tóxicos"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
 
+<embed src="./mere-v3-residuos-relacional.pdf" type="application/pdf" width="100%" height="600px" />
 
 ## Punto 2: Comidas a Domicilio
 
 Sistema de información para la franquicia Eat'n Go, empresa dedicada a la venta de pizzas, bocadillos y productos complementarios. Se modelaron entidades como artículos, ingredientes, pedidos, clientes, repartidores y scooters, considerando supuestos sobre tamaños, precios, tipos de venta (local, recoger o domicilio), promociones y artículos estrella.
 
 <Image
-  src="./mere-v3-comidas-mer.png"
+  src={comidasMer}
   alt="Modelo Entidad-Relación del sistema de Comidas a Domicilio"
   width={1200}
   height={800}
@@ -42,12 +56,20 @@ Sistema de información para la franquicia Eat'n Go, empresa dedicada a la venta
 
 <embed src="./mere-v3-comidas-mer.pdf" type="application/pdf" width="100%" height="600px" />
 
+<Image
+  src={comidasRelacional}
+  alt="Modelo Relacional del sistema de Comidas a Domicilio"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
 
+<embed src="./mere-v3-comidas-relacional.pdf" type="application/pdf" width="100%" height="600px" />
 
 ## Punto 3: Sistema propio — Universidad El Bosque
 
 <Image
-  src="./mere-v3-bosque-mer.png"
+  src={bosqueMer}
   alt="Modelo Entidad-Relación Extendido del sistema propio para la Universidad El Bosque"
   width={1200}
   height={800}
@@ -56,4 +78,12 @@ Sistema de información para la franquicia Eat'n Go, empresa dedicada a la venta
 
 <embed src="./mere-v3-bosque-mer.pdf" type="application/pdf" width="100%" height="600px" />
 
+<Image
+  src={bosqueRelacional}
+  alt="Modelo Relacional del sistema propio para la Universidad El Bosque"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
 
+<embed src="./mere-v3-bosque-relacional.pdf" type="application/pdf" width="100%" height="600px" />
