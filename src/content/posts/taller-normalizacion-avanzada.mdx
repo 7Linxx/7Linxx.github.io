@@ -1,0 +1,36 @@
+---
+title: Taller Normalización Avanzada de Bases de Datos
+author: Luna Calderón, Isabella Rodríguez
+description: Taller de Bases de Datos 1 en donde se aplica normalización avanzada (1FN, 2FN, 3FN) sobre dos esquemas complejos - sistema de envíos con guías y paquetes, y sistema de alquiler de cassettes
+tags: ['Bases de Datos', 'Normalización', '1FN', '2FN', '3FN', 'Dependencias Funcionales', 'Aprendizaje']
+publishDate: 2026-05-22
+---
+
+import { Image } from 'astro:assets'
+import normalizacionAvanzada from './Normalizacion_avanzado.png'
+
+## Taller Normalización Avanzada de Bases de Datos
+
+En este taller de Bases de Datos 1 aplicamos el proceso completo de normalización sobre dos esquemas relacionales complejos con múltiples dependencias funcionales. Para cada ejercicio se identificó la llave primaria compuesta, se determinó la forma normal inicial, y se realizó la transición 1FN → 2FN → 3FN preservando todas las dependencias y permitiendo join sin pérdida. Los esquemas relacionales finales fueron construidos en Oracle Data Modeler.
+
+<Image
+  src={normalizacionAvanzada}
+  alt="Tablas del proceso de normalización avanzada - sistema de envíos y alquiler de cassettes"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+<embed src="/posts/Taller_normalizacion_avanzada.pdf" type="application/pdf" width="100%" height="600px" />
+
+## Punto 1: Sistema de Envíos
+
+Normalización de un sistema de gestión de envíos con guías, paquetes y eventos de seguimiento. La llave primaria compuesta identificada fue `(num_guia, cod_paquete, cod_evento)`, dado que estos tres atributos en conjunto identifican de forma única cada evento de rastreo de un paquete dentro de una guía. La tabla original no se encontraba en 1FN por la presencia de grupos repetidos en múltiples atributos de guía, paquete y destino.
+
+En 2FN se eliminaron las dependencias parciales extrayendo tablas independientes para Guía, Organización, Destino, Zona, Empleado, Vehículo, Paquete, Evento y Pago. En 3FN se separó la dependencia transitiva entre `dest_cod_ciudad` y `dest_id`, creando una tabla Ciudad independiente. El esquema relacional final comprende 11 tablas con sus respectivas claves primarias y foráneas.
+
+## Punto 2: Sistema de Alquiler de Cassettes
+
+Normalización de un sistema de videoclub con alquileres, cassettes, películas, actores, categorías, membresías, clientes y sucursales. La llave primaria compuesta identificada fue `(cod_alquiler, cod_cassette, cod_actor)`, ya que estos atributos son los únicos que identifican unívocamente cada instancia de la tabla sin normalizar.
+
+La tabla original presentaba grupos repetidos y dependencias parciales en múltiples columnas. En 1FN se eliminaron los grupos repetidos; en 2FN se extrajeron las dependencias parciales generando tablas para Alquiler, Cassette, Película, Actor, Categoría, Membresía, Cliente y Sucursal. En 3FN se separó la dependencia transitiva del director respecto a la película. El esquema relacional final contiene 9 tablas construidas en Oracle Data Modeler.

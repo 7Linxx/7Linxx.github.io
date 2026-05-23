@@ -1,0 +1,48 @@
+---
+title: Taller Normalización de Bases de Datos
+author: Luna Calderón, Isabella Rodríguez
+description: Taller de Bases de Datos 1 en donde se aplican los conceptos de normalización (1FN, 2FN, 3FN y FNBC) sobre diferentes esquemas relacionales - proyectos, estudiantes, restaurante, visitas médicas y alquileres de películas
+tags: ['Bases de Datos', 'Normalización', '1FN', '2FN', '3FN', 'FNBC', 'Aprendizaje']
+publishDate: 2026-05-22
+---
+
+import { Image } from 'astro:assets'
+import normalizacion from './Normalizacion.png'
+
+## Taller Normalización de Bases de Datos
+
+En este taller de Bases de Datos 1 aplicamos los conceptos fundamentales de normalización sobre distintos esquemas relacionales. Para cada ejercicio se identificaron las dependencias funcionales, se determinó la forma normal actual y se realizó el proceso paso a paso hasta alcanzar la Tercera Forma Normal (3FN) o la Forma Normal de Boyce-Codd (FNBC) según correspondiera.
+
+<Image
+  src={normalizacion}
+  alt="Proceso de normalización 1FN, 2FN y 3FN de los ejercicios del taller"
+  width={1200}
+  height={800}
+  class="w-full rounded-lg"
+/>
+
+<embed src="/posts/Taller_Normalizacion.pdf" type="application/pdf" width="100%" height="600px" />
+
+## Punto 1: Tabla de Proyectos
+
+Normalización de una tabla que registra proyectos, empleados, profesiones, valor por hora y horas asignadas. La tabla no se encontraba en ninguna forma normal a pesar de contar con atomicidad, debido a la presencia de valores repetidos. Se aplicó 1FN separando los grupos repetidos en tablas independientes para proyectos, empleados y asignaciones. En 2FN se identificaron las claves primarias de cada tabla y se verificó que no existieran dependencias parciales. En 3FN se separó la dependencia transitiva entre profesión y valor por hora en una tabla independiente.
+
+## Punto 2: Tabla de Estudiantes
+
+Análisis de una tabla de estudiantes con atributos multivaluados en cursos y puntos de calificación. La tabla no estaba en 1FN por carecer de atomicidad. Se realizó la descomposición en dos tablas — Estudiante y Curso — eliminando los atributos multivaluados y definiendo claves primarias y foráneas correctamente.
+
+## Punto 3: Sistema Member_Dinner
+
+Normalización del sistema de gestión de cenas de un restaurante nocturno. Se identificaron valores multivaluados en los códigos y descripciones de comida por cena. Se construyó el esquema relacional Member_Dinner, se planteó el diagrama de dependencias funcionales en 1FN, y se avanzó hasta 3FN separando la dependencia transitiva de Venue_Code respecto a Dinner_Num en una tabla independiente de Venue.
+
+## Punto 4: Tabla de Visitas Médicas
+
+Normalización de una tabla de visitas que relaciona pacientes, proveedores médicos y diagnósticos. La tabla no cumplía la 1FN por presencia de grupos repetidos. Se identificaron las dependencias funcionales (PacNo, ProvNo, VisitaNo) y se descompuso progresivamente hasta 3FN, obteniendo tablas independientes para Visita, Paciente y Proveedor.
+
+## Punto 5: Tabla de Alquileres Netflix (BCNF)
+
+Análisis de la tabla Rentals con clave compuesta (RentalID, Title). Se identificaron dependencias funcionales parciales y transitivas, y se descompuso hasta 3FN obteniendo tablas para Rentals, RentalDetail, Movie y Category. Se concluyó que en este caso específico la 3FN y la FNBC producen el mismo resultado, ya que no existe ninguna dependencia funcional cuyo determinante no sea superclave.
+
+## Punto 6: Reflexión — Diseño ER y Normalización
+
+Un buen diseño del Modelo Entidad-Relación establece entidades con atributos propios, relaciones con cardinalidades correctas y claves únicas por entidad. Al transformar el modelo ER a tablas relacionales, cada relación implica una dependencia funcional clara, lo que hace que las tablas resultantes ya cumplan con 2FN y 3FN de forma natural. La normalización se vuelve necesaria únicamente cuando el modelo ER no fue suficientemente riguroso en su construcción.
